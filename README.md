@@ -30,9 +30,9 @@ make_clean "/tmp/1"
 ```
 
 There is additional attributes:
-  exclude - Array of exclude files in dir
-  report_only - for testing, if you not sure what you want to clean 
-  notify - run some command if cleaner remove some files
+ * exclude - Array of exclude files in dir
+ * report_only - for testing, if you not sure what you want to clean 
+ * notify - run some command if cleaner remove some files
 
 ```ruby
 make_clean "/etc/sensu/conf.d/checks" do
