@@ -69,7 +69,7 @@ class Chef
         unless dir[:notify].nil?
           unless dir[:report_only]
             puts "Running notify"
-            `dir[:notify]`
+            `#{dir[:notify]}`
           end
         end
 
