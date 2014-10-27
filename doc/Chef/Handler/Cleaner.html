@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>class Chef::Handler::Cleaner - RDoc Documentation</title>
+
+<link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../../index.html">Home</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>libraries/handler.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="../Handler.html">Chef::Handler</a>
+  
+</nav>
+
+    
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li ><a href="#method-i-keep_files">#keep_files</a>
+    
+    <li ><a href="#method-i-list_files">#list_files</a>
+    
+    <li ><a href="#method-i-mark_as_dirty">#mark_as_dirty</a>
+    
+    <li ><a href="#method-i-mark_files">#mark_files</a>
+    
+    <li ><a href="#method-i-notify_user">#notify_user</a>
+    
+    <li ><a href="#method-i-recive_dirs_list">#recive_dirs_list</a>
+    
+    <li ><a href="#method-i-remove_files">#remove_files</a>
+    
+    <li ><a href="#method-i-report">#report</a>
+    
+    <li ><a href="#method-i-run_notify_command">#run_notify_command</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../../Chef.html">Chef</a>
+  
+    <li><a href="../../Chef/Handler.html">Chef::Handler</a>
+  
+    <li><a href="../../Chef/Handler/Cleaner.html">Chef::Handler::Cleaner</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class Chef::Handler::Cleaner</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-report" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">report</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <dl class="rdoc-list note-list"><dt>report
+<dd>
+<p>is main method. It will run first. It will do:</p>
+</dd></dl>
+<ol><li>
+<p>Recive dir list with arguments</p>
+</li><li>
+<p>Mark files for remove</p>
+</li><li>
+<p>Remove files</p>
+</li><li>
+<p>Make output</p>
+</li></ol>
+          
+          
+
+          
+          <div class="method-source-code" id="report-source">
+            <pre><span class="ruby-comment"># File libraries/handler.rb, line 14</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">report</span>
+  <span class="ruby-identifier">dirs</span> = <span class="ruby-identifier">recive_dirs_list</span>
+  <span class="ruby-keyword">for</span> <span class="ruby-identifier">dir</span> <span class="ruby-keyword">in</span> <span class="ruby-identifier">dirs</span>
+    <span class="ruby-identifier">mark_files</span>(<span class="ruby-identifier">dir</span>)
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-comment"># remove_file </span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- report-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- report-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+     <section id="private-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Private Instance Methods</h3>
+
+    
+      <div id="method-i-keep_files" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">keep_files</span><span
+            class="method-args">(dir)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="keep_files-source">
+            <pre><span class="ruby-comment"># File libraries/handler.rb, line 50</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">keep_files</span>(<span class="ruby-identifier">dir</span>)
+  <span class="ruby-comment"># Find all files, who was updated with chef and contain our directory in &quot;path&quot; </span>
+  <span class="ruby-identifier">array</span> = <span class="ruby-identifier">all_resources</span>.<span class="ruby-identifier">find_all</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">path</span> <span class="ruby-operator">=~</span> <span class="ruby-constant">Regexp</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;^&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">dir</span>.<span class="ruby-identifier">directory</span>.<span class="ruby-identifier">to_s</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-string">&quot;path&quot;</span>}
+  <span class="ruby-comment"># Add this files to files_to_keep dir variable</span>
+  <span class="ruby-identifier">dir</span>.<span class="ruby-identifier">files_to_keep</span> = <span class="ruby-identifier">array</span>.<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">resource</span><span class="ruby-operator">|</span> <span class="ruby-constant">Pathname</span>(<span class="ruby-identifier">resource</span>.<span class="ruby-identifier">path</span>)}
+  <span class="ruby-comment"># Keep all files who are in exclude list</span>
+  <span class="ruby-keyword">for</span> <span class="ruby-identifier">record</span> <span class="ruby-keyword">in</span> <span class="ruby-identifier">dir</span>.<span class="ruby-identifier">exclude</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">record</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Regexp</span>
+      <span class="ruby-comment"># if record in exclude list is Regexp — we keep all files who can be parsed with regexp</span>
+      <span class="ruby-identifier">dir</span>.<span class="ruby-identifier">files</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file_in</span><span class="ruby-operator">|</span> 
+        <span class="ruby-identifier">dir</span>.<span class="ruby-identifier">files_to_keep</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">file_in</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">record</span> <span class="ruby-operator">=~</span> <span class="ruby-identifier">file_in</span>.<span class="ruby-identifier">to_s</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">record</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-string">&quot;to_s&quot;</span>
+      <span class="ruby-identifier">file</span> = <span class="ruby-constant">Pathname</span>(<span class="ruby-identifier">record</span>)
+      <span class="ruby-identifier">file</span> = <span class="ruby-identifier">dir</span>.<span class="ruby-identifier">directory</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">file</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">absolute?</span>
+      <span class="ruby-identifier">dir</span>.<span class="ruby-identifier">files_to_keep</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">file</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- keep_files-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- keep_files-method -->
+
+    
+      <div id="method-i-list_files" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">list_files</span><span
+            class="method-args">(dirname, recursive)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>This method for listing files in directory</p>
+          
+          
+
+          
+          <div class="method-source-code" id="list_files-source">
+            <pre><span class="ruby-comment"># File libraries/handler.rb, line 38</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">list_files</span>(<span class="ruby-identifier">dirname</span>, <span class="ruby-identifier">recursive</span>)
+  <span class="ruby-identifier">array</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
+  <span class="ruby-identifier">dirname</span>.<span class="ruby-identifier">each_child</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">file</span> = <span class="ruby-identifier">file</span>.<span class="ruby-identifier">realpath</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">directory?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">recursive</span>
+      <span class="ruby-identifier">array</span> = <span class="ruby-identifier">array</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">list_files</span>(<span class="ruby-identifier">file</span>, <span class="ruby-identifier">recursive</span>)
+    <span class="ruby-keyword">elsif</span> <span class="ruby-operator">!</span>(<span class="ruby-identifier">file</span>.<span class="ruby-identifier">directory?</span>)
+      <span class="ruby-identifier">array</span> = <span class="ruby-identifier">array</span> <span class="ruby-operator">+</span> <span class="ruby-constant">Array</span>(<span class="ruby-identifier">file</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">array</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- list_files-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- list_files-method -->
+
+    
+      <div id="method-i-mark_as_dirty" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">mark_as_dirty</span><span
+            class="method-args">(dir)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="mark_as_dirty-source">
+            <pre><span class="ruby-comment"># File libraries/handler.rb, line 69</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">mark_as_dirty</span>(<span class="ruby-identifier">dir</span>)
+  <span class="ruby-identifier">dir</span>.<span class="ruby-identifier">files_to_remove</span> = <span class="ruby-identifier">dir</span>.<span class="ruby-identifier">files</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">dir</span>.<span class="ruby-identifier">files_to_keep</span> 
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- mark_as_dirty-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- mark_as_dirty-method -->
+
+    
+      <div id="method-i-mark_files" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">mark_files</span><span
+            class="method-args">(dir)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="mark_files-source">
+            <pre><span class="ruby-comment"># File libraries/handler.rb, line 28</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">mark_files</span>(<span class="ruby-identifier">dir</span>)
+  <span class="ruby-identifier">dir</span>.<span class="ruby-identifier">files</span> = <span class="ruby-identifier">list_files</span>(<span class="ruby-identifier">dir</span>.<span class="ruby-identifier">directory</span>, <span class="ruby-identifier">dir</span>.<span class="ruby-identifier">recursive?</span>)
+  <span class="ruby-identifier">keep_files</span>(<span class="ruby-identifier">dir</span>)
+  <span class="ruby-identifier">mark_as_dirty</span>(<span class="ruby-identifier">dir</span>)
+  <span class="ruby-identifier">remove_files</span>(<span class="ruby-identifier">dir</span>)
+  <span class="ruby-identifier">run_notify_command</span>(<span class="ruby-identifier">dir</span>)
+  <span class="ruby-identifier">notify_user</span>(<span class="ruby-identifier">dir</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- mark_files-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- mark_files-method -->
+
+    
+      <div id="method-i-notify_user" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">notify_user</span><span
+            class="method-args">(dir)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="notify_user-source">
+            <pre><span class="ruby-comment"># File libraries/handler.rb, line 88</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">notify_user</span>(<span class="ruby-identifier">dir</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">dir</span>.<span class="ruby-identifier">files_to_remove</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Dir: #{dir.directory}. Files are maked for remove and &quot;</span> <span class="ruby-operator">+</span> (<span class="ruby-identifier">dir</span>.<span class="ruby-identifier">report?</span> <span class="ruby-operator">?</span> <span class="ruby-string">&quot;not removed (report):&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-string">&quot;removed:&quot;</span>)
+    <span class="ruby-keyword">for</span> <span class="ruby-identifier">file</span> <span class="ruby-keyword">in</span> <span class="ruby-identifier">dir</span>.<span class="ruby-identifier">files_to_remove</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;\t#{file}&quot;</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot; &quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- notify_user-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- notify_user-method -->
+
+    
+      <div id="method-i-recive_dirs_list" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">recive_dirs_list</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Recive dirs list from Chef::Recipe::Cleaner.clean_list</p>
+          
+          
+
+          
+          <div class="method-source-code" id="recive_dirs_list-source">
+            <pre><span class="ruby-comment"># File libraries/handler.rb, line 24</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">recive_dirs_list</span>
+  <span class="ruby-constant">Chef</span><span class="ruby-operator">::</span><span class="ruby-constant">Recipe</span><span class="ruby-operator">::</span><span class="ruby-constant">Cleaner</span>.<span class="ruby-identifier">clean_list</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- recive_dirs_list-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- recive_dirs_list-method -->
+
+    
+      <div id="method-i-remove_files" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">remove_files</span><span
+            class="method-args">(dir)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Remove all files from files_to_remove list, unless report is true</p>
+          
+          
+
+          
+          <div class="method-source-code" id="remove_files-source">
+            <pre><span class="ruby-comment"># File libraries/handler.rb, line 73</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">remove_files</span>(<span class="ruby-identifier">dir</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">dir</span>.<span class="ruby-identifier">report?</span>
+  <span class="ruby-keyword">for</span> <span class="ruby-identifier">file</span> <span class="ruby-keyword">in</span> <span class="ruby-identifier">dir</span>.<span class="ruby-identifier">files_to_remove</span>
+    <span class="ruby-identifier">file</span>.<span class="ruby-identifier">delete</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">exist?</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- remove_files-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- remove_files-method -->
+
+    
+      <div id="method-i-run_notify_command" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">run_notify_command</span><span
+            class="method-args">(dir)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="run_notify_command-source">
+            <pre><span class="ruby-comment"># File libraries/handler.rb, line 79</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">run_notify_command</span>(<span class="ruby-identifier">dir</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">dir</span>.<span class="ruby-identifier">notify</span>.<span class="ruby-identifier">empty?</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">dir</span>.<span class="ruby-identifier">report?</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">dir</span>.<span class="ruby-identifier">files_to_remove</span>.<span class="ruby-identifier">empty?</span>
+  <span class="ruby-keyword">for</span> <span class="ruby-identifier">command</span> <span class="ruby-keyword">in</span> <span class="ruby-identifier">dir</span>.<span class="ruby-identifier">notify</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Running notify command #{command}&quot;</span>
+    <span class="ruby-identifier">system</span>(<span class="ruby-identifier">command</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- run_notify_command-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- run_notify_command-method -->
+
+    
+    </section><!-- private-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.0.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

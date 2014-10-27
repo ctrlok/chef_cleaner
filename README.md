@@ -26,18 +26,40 @@ Include `chef_cleaner` in your node's `run_list`:
 For starting cleaning in directory use make_clean resource:
 
 ```ruby
-make_clean "/tmp/1"
+chef_cleaner "/tmp/1"
 ```
 
 There is additional attributes:
- * exclude - Array of exclude files in dir
- * report_only - for testing, if you not sure what you want to clean 
- * notify - run some command if cleaner remove some files
+ * recursive - For recursive check files in dir. *Default*: false (TrueFalse)
+ * exclude - Array of exclude files in dir (May be Regexp or local path or global path) (String or Regexp or Array)
+ * report - for testing, if you not sure what you want to clean. *Default*: false (TrueFalse)
+ * notify - run some command if cleaner remove some files (String or Array)
+
+ Actions:
+ * :make clean - Default action
+ * :report - Make report, not remove files
+
+ Examples:
 
 ```ruby
-make_clean "/etc/sensu/conf.d/checks" do
-  exclude ["my_new_check.json"]
-  notify `service sensu-client restart`
+chef_cleaner "/etc/sensu/conf.d/checks" do
+  exclude "my_new_check.json"
+  notify "\`service sensu-client restart\`"
+end
+```
+
+```ruby
+chef_cleaner "/etc/nginx/site-enables" do
+  recursive true
+  action :report
+end
+```
+
+```ruby
+chef_cleaner "Custom name" do
+  directory "/tmp/test_directory_7"
+  recursive true
+  exclude [/.*regexp$/, "subdir_created_with_bash/created_with_bash", "/subdir_created_with_chef/created_with_bash", "/tmp/test_directory_7/subdir_created_with_bash/created_with_bash_other"]
 end
 ```
 ## Contributing
