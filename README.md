@@ -20,9 +20,9 @@ Include `chef_cleaner` in your node's `run_list`:
 }
 ```
 
-### make_clean resource
+### chef_cleaner resource
 
-For starting cleaning in directory use make_clean resource:
+For starting cleaning in directory use chef_cleaner resource:
 
 ```ruby
 chef_cleaner "/tmp/1"
@@ -35,7 +35,7 @@ There is additional attributes:
  * notify - run some command if cleaner remove some files (String or Array)
 
  Actions:
- * :make clean - Default action
+ * :make_clean - Default action
  * :report - Make report, not remove files
 
  Examples:
@@ -61,6 +61,13 @@ chef_cleaner "Custom name" do
   exclude [/.*regexp$/, "subdir_created_with_bash/created_with_bash", "/subdir_created_with_chef/created_with_bash", "/tmp/test_directory_7/subdir_created_with_bash/created_with_bash_other"]
 end
 ```
+
+## Testing
+
+1. Modify test.rb recipe
+2. Just run `vagrant up`
+
+
 ## Contributing
 
 1. Fork the repository on Github
