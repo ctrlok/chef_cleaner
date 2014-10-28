@@ -5,7 +5,6 @@ Simple chef handler to remove files who was not updated by chef in the specific 
 ## Supported Platforms
 
 Tested on Ubuntu 12.04, but may work on almost all linux platforms.
-*WARNING* - now it works only with patched chef_handler cookbook. I create pull request to opscode chef_handler and you can check his status: https://github.com/opscode-cookbooks/chef_handler/pull/15
 
 ## Usage
 
